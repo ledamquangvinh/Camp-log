@@ -17,4 +17,28 @@ export const campsites: Campsite[] = [
     description: "A peaceful beach camping destination.",
     coverImage: "/images/nui-dinh.jpg",
   },
+  {
+    id: 3,
+    slug: "la-ngau",
+    name: "La Ngau",
+    location: "Ta Pao",
+    description: "Perfect campsite with rock and stream.",
+    coverImage: "/images/la-ngau.JPG",
+  },
+    {
+    id: 4,
+    slug: "thanh-van",
+    name: "Thanh Van",
+    location: "Lam Dong",
+    description: "Small stream and beautiful site of the mountain.",
+    coverImage: "/images/thanh-van.JPG",
+  },
+    {
+    id: 5,
+    slug: "doi-doi",
+    name: "Doi Doi",
+    location: "Lam Dong",
+    description: "Ever want to see the world?",
+    coverImage: "/images/doi-doi.JPG",
+  }
 ];
