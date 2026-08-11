@@ -4,17 +4,19 @@ import Footer from "./ui/Footer";
 import Header from "./ui/Header";
 
 import { campsites } from "@/app/lib/campsites";
+import Hero from "./ui/Hero";
 
 export default function Home() {
   const camps = campsites.slice(0,2);
   return (
     <div>
-      <div className="grid justify-items-center">
+      <Hero/>
+      <div className="grid justify-items-center mt-5">
         {camps.map((camp) => (
           <Card key={camp.id} campsite={camp} />
         ))}
 
-        <Link href={"/campsites"} className="rounded-lg bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700">
+        <Link href={"/campsites"} className="rounded-lg bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700 mt-5">
           View More
         </Link>
       </div>

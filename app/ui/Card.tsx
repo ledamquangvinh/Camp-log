@@ -8,7 +8,7 @@ export type CardProp = {
 
 export default function Card({ campsite }: CardProp) {
   return (
-    <div className="w-72 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+    <div className="w-72 overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl m-5">
       <Image
         src={campsite.coverImage}
         alt={campsite.name}
