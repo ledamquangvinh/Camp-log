@@ -4,7 +4,7 @@ import sql from "./db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function createCampsite(formData: FormData) {
+export async function createCampsite(formData: FormData): Promise<void> {
   console.log(Object.fromEntries(formData.entries()));
   const validateFields = CreateCampsite.safeParse({
     slug: formData.get("slug"),
@@ -15,10 +15,7 @@ export async function createCampsite(formData: FormData) {
   });
 
   if (!validateFields.success) {
-    return {
-      errors: validateFields.error.flatten().fieldErrors,
-      message: "Missing Fields",
-    };
+    throw new Error("Invalid campsite data");
   }
 
   const { slug, name, location, description, coverImage } = validateFields.data;
@@ -29,11 +26,11 @@ export async function createCampsite(formData: FormData) {
       VALUES (${slug}, ${name}, ${location}, ${description}, ${coverImage})
     `;
   } catch (error) {
-    // console.error("DATABASE ERROR:", error);
-    // throw new Error("Database Error: Failed to create campsite");
-    return {
-      message: "Database Error: Failed to create campsite",
-    };
+    console.error("DATABASE ERROR:", error);
+    throw new Error("Database Error: Failed to create campsite");
+    // return {
+    //   message: "Database Error: Failed to create campsite",
+    // };
   }
 
   revalidatePath("/admin");
@@ -42,7 +39,10 @@ export async function createCampsite(formData: FormData) {
   redirect("/campsites");
 }
 
-export async function updateCampsite(id: number, formData: FormData) {
+export async function updateCampsite(
+  id: number,
+  formData: FormData,
+): Promise<void> {
   const validateFields = CreateCampsite.safeParse({
     slug: formData.get("slug"),
     name: formData.get("name"),
@@ -52,10 +52,7 @@ export async function updateCampsite(id: number, formData: FormData) {
   });
 
   if (!validateFields.success) {
-    return {
-      errors: validateFields.error.flatten().fieldErrors,
-      message: "Missing Fields",
-    };
+    throw new Error("Invalid campsite data");
   }
 
   console.log(validateFields.data);
@@ -68,7 +65,7 @@ export async function updateCampsite(id: number, formData: FormData) {
       SET slug = ${slug}, name = ${name}, location = ${location}, description = ${description}, cover_image = ${coverImage}
       WHERE id = ${id}
     `;
-    console.log("Inserted")
+    console.log("Inserted");
   } catch (error) {
     console.error("DATABASE ERROR:", error);
     throw new Error("Database Error: Failed to create campsite");
