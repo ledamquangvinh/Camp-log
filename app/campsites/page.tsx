@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { campsites } from "../lib/campsites";
+import { fetchCampsites } from "../lib/data";
 import Card from "../ui/Card";
-import Footer from "../ui/Footer";
-import Header from "../ui/Header";
 
-export default function CampsiteList() {
+export default async function CampsiteList() {
+  const campsites = await fetchCampsites();
   return (
     <div className="mx-auto max-w-7xl px-6 py-10">
       <div className="mb-10 text-center">

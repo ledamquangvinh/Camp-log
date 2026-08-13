@@ -1,4 +1,4 @@
-import { campsites } from "@/app/lib/campsites";
+import { fetchCampsiteBySlug } from "@/app/lib/data";
 import Footer from "../../ui/Footer";
 import Header from "../../ui/Header";
 import Image from "next/image";
@@ -12,7 +12,8 @@ export default async function CampsiteDetail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const campsite = campsites.find((camp) => camp.slug === slug);
+  const campsite = await fetchCampsiteBySlug(slug);
+  
 
   if (!campsite) {
     return notFound();

@@ -1,22 +1,22 @@
 import Link from "next/link";
 import Card from "./ui/Card";
-import Footer from "./ui/Footer";
-import Header from "./ui/Header";
-
-import { campsites } from "@/app/lib/campsites";
+import { fetchCampsites } from "./lib/data";
 import Hero from "./ui/Hero";
 
-export default function Home() {
-  const camps = campsites.slice(0,2);
+export default async function Home() {
+  const camps = await fetchCampsites();
   return (
     <div>
-      <Hero/>
+      <Hero />
       <div className="grid justify-items-center mt-5">
-        {camps.map((camp) => (
+        {camps.slice(0,2).map((camp) => (
           <Card key={camp.id} campsite={camp} />
         ))}
 
-        <Link href={"/campsites"} className="rounded-lg bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700 mt-5">
+        <Link
+          href={"/campsites"}
+          className="rounded-lg bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700 mt-5"
+        >
           View More
         </Link>
       </div>

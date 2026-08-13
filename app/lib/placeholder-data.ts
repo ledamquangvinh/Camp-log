@@ -7,7 +7,7 @@ export const campsites: Campsite[] = [
     name: "Núi Dinh",
     location: "Bà Rịa - Vũng Tàu",
     description: "Beautiful mountain campsite for beginners.",
-    coverImage: "/images/ho-tram.JPG",
+    coverImage: "/images/nui-dinh.JPG",
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ export const campsites: Campsite[] = [
     name: "Hồ Tràm",
     location: "Bà Rịa - Vũng Tàu",
     description: "A peaceful beach camping destination.",
-    coverImage: "/images/nui-dinh.jpg",
+    coverImage: "/images/ho-tram.jpg",
   },
   {
     id: 3,
@@ -24,6 +24,7 @@ export const campsites: Campsite[] = [
     location: "Ta Pao",
     description: "Perfect campsite with rock and stream.",
     coverImage: "/images/la-ngau.JPG",
+
   },
     {
     id: 4,
@@ -32,6 +33,7 @@ export const campsites: Campsite[] = [
     location: "Lam Dong",
     description: "Small stream and beautiful site of the mountain.",
     coverImage: "/images/thanh-van.JPG",
+
   },
     {
     id: 5,
